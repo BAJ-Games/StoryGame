@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cvpf4vfx0jq6a"]
+
+[ext_resource type="Texture2D" uid="uid://2ai35ftkq2f4" path="res://assets/images/StartMenu.jpg" id="1_3eh7m"]
+[ext_resource type="Theme" uid="uid://lfvc424kv7ea" path="res://assets/themes/ButtonTheme.tres" id="2_ixut7"]
+
+[node name="PlayMenu" type="Control" unique_id=1246489549]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2001518308]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_3eh7m")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="." unique_id=1686629842]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -42.0
+offset_right = 161.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ixut7")
+text = "New Game"
