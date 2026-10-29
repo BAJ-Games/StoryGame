@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed("ui_cancel"):
 		back()
 
@@ -16,4 +16,4 @@ func _on_back_pressed() -> void:
 	back()
 
 func back() -> void:
-	get_parent().change_scene_fluid("res://scenes/play_menu.tscn")
+	get_parent().change_scene_fluid("res://scenes/start_menu.tscn", true)
