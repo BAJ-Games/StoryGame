@@ -9,6 +9,8 @@ func save(player_name, savegame : String) -> void:
 	
 	ResourceSaver.save(save, path)
 	
+	print("Was saved")
+	
 func load(savegame : String):
 	var path = "user://savegame_" + savegame + ".res"
 	

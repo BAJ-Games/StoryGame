@@ -15,3 +15,4 @@ func _process(delta: float) -> void:
 func _on_submit_pressed() -> void:
 	if player_name.text != "":
 		var choosen_name = player_name.text
+		SaveLoad.save(choosen_name, "test")
