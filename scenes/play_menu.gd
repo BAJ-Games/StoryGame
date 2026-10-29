@@ -17,3 +17,7 @@ func _on_back_pressed() -> void:
 
 func back() -> void:
 	get_parent().change_scene_fluid("res://scenes/start_menu.tscn", true)
+
+
+func _on_new_game_pressed() -> void:
+	get_parent().change_scene_fluid("res://scenes/game_start.tscn")

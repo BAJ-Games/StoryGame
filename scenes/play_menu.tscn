@@ -68,4 +68,5 @@ grow_vertical = 2
 theme = ExtResource("2_ixut7")
 text = "Back"
 
+[connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
