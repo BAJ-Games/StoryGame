@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="StoryGame"
-run/main_scene="uid://3darcfueatu3"
+run/main_scene="uid://dic07jlcv571f"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="uid://cbx2pjqk634eq"
 
