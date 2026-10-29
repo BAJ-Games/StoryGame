@@ -1,5 +1,6 @@
 extends Control
 
+@onready var player_name = $Name
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,4 +13,5 @@ func _process(delta: float) -> void:
 
 
 func _on_submit_pressed() -> void:
-	pass # Replace with function body.
+	if player_name.text != "":
+		var choosen_name = player_name.text
