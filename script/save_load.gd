@@ -1,13 +1,13 @@
 extends Node
 
 func save(player_name, savegame : String) -> void:
-	var save = PlayerSave.new()
+	var player_save = PlayerSave.new()
 	
-	save.name = player_name
+	player_save.name = player_name
 	
 	var path : String = "user://savegame_" + savegame + ".res"
 	
-	ResourceSaver.save(save, path)
+	ResourceSaver.save(player_save, path)
 	
 	print("Was saved")
 	
