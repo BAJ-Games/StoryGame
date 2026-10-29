@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://3darcfueatu3"]
 
 [ext_resource type="Script" uid="uid://b3b0u37nkhvqd" path="res://script/start_menu.gd" id="1_cp7se"]
-[ext_resource type="Texture2D" uid="uid://wp7tmu17ko2v" path="res://assets/images/StartMenu.png" id="1_fb70i"]
+[ext_resource type="Texture2D" uid="uid://2ai35ftkq2f4" path="res://assets/images/StartMenu.jpg" id="2_cp7se"]
 [ext_resource type="Theme" uid="uid://lfvc424kv7ea" path="res://assets/themes/ButtonTheme.tres" id="3_fgoeh"]
 
 [node name="StartMenu" type="Control" unique_id=726293355]
@@ -17,7 +17,7 @@ script = ExtResource("1_cp7se")
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("1_fb70i")
+texture = ExtResource("2_cp7se")
 expand_mode = 1
 
 [node name="Play" type="Button" parent="." unique_id=791515368]
