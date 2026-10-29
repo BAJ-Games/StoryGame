@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://wp7tmu17ko2v" path="res://assets/images/StartMenu.png" id="1_fb70i"]
 
-[node name="Control" type="Control" unique_id=726293355]
+[node name="StartMenu" type="Control" unique_id=726293355]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
