@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://lfvc424kv7ea"]
+
+[ext_resource type="FontFile" uid="uid://cw0kk6rr7ls7w" path="res://assets/fonts/Rubik-Italic-VariableFont_wght.ttf" id="1_vijb8"]
+
+[resource]
+default_font = ExtResource("1_vijb8")
+default_font_size = 64

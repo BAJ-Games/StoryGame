@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://3darcfueatu3"]
 
 [ext_resource type="Texture2D" uid="uid://wp7tmu17ko2v" path="res://assets/images/StartMenu.png" id="1_fb70i"]
+[ext_resource type="Theme" uid="uid://lfvc424kv7ea" path="res://assets/themes/ButtonTheme.tres" id="3_fgoeh"]
 
 [node name="StartMenu" type="Control" unique_id=726293355]
 layout_mode = 3
@@ -16,3 +17,19 @@ offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("1_fb70i")
 expand_mode = 1
+
+[node name="Button" type="Button" parent="." unique_id=791515368]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -42.0
+offset_right = 66.5
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_fgoeh")
+text = "Play"
