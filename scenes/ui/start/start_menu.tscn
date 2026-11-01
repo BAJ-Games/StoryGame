@@ -69,4 +69,5 @@ theme = ExtResource("3_fcv5n")
 text = "Quit Game"
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
