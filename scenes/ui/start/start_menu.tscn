@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://3darcfueatu3"]
 
-[ext_resource type="Script" uid="uid://b3b0u37nkhvqd" path="res://script/start_menu.gd" id="1_m7x51"]
+[ext_resource type="Script" uid="uid://b3b0u37nkhvqd" path="res://script/ui/start/start_menu.gd" id="1_m7x51"]
 [ext_resource type="Texture2D" uid="uid://2ai35ftkq2f4" path="res://assets/images/StartMenu.jpg" id="2_h61rw"]
 [ext_resource type="Theme" uid="uid://lfvc424kv7ea" path="res://assets/themes/ButtonTheme.tres" id="3_fcv5n"]
 

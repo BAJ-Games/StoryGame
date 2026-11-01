@@ -10,4 +10,4 @@ func _on_submit_pressed() -> void:
 		next_page()
 		
 func next_page() -> void:
-	get_parent().change_scene_fluid("res://scenes/username_control.tscn")
+	get_parent().change_scene_fluid("res://scenes/ui/start/username_control.tscn")
