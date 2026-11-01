@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bqtefhrxdocwi"]
+
+[ext_resource type="Script" uid="uid://bp3qkk5k8hnbw" path="res://script/ui/start/load_savegame.gd" id="1_b37du"]
+[ext_resource type="Texture2D" uid="uid://2ai35ftkq2f4" path="res://assets/images/StartMenu.jpg" id="1_mikhw"]
+[ext_resource type="Theme" uid="uid://lfvc424kv7ea" path="res://assets/themes/ButtonTheme.tres" id="2_6tvqq"]
+
+[node name="LoadSavegame" type="Control" unique_id=1397921108]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b37du")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=40459571]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_mikhw")
+expand_mode = 1
+
+[node name="ItemList" type="ItemList" parent="." unique_id=110650340]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -236.0
+offset_right = 384.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_6tvqq")
+
+[node name="Button" type="Button" parent="." unique_id=764214080]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -152.0
+offset_right = 78.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_6tvqq")
+text = "Load"

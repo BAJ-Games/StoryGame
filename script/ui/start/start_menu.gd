@@ -23,3 +23,7 @@ func quit() -> void:
 
 func _on_play_pressed() -> void:
 	get_parent().change_scene_fluid("res://scenes/ui/start/play_menu.tscn")
+
+
+func _on_load_pressed() -> void:
+	get_parent().change_scene_fluid("res://scenes/ui/start/load_savegame.tscn")

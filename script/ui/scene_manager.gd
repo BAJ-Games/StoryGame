@@ -2,6 +2,19 @@ extends Node
 
 @onready var current_scene = $StartMenu
 
+func _ready() -> void:
+	var folder_path = "user://savegames/"
+	
+	if not DirAccess.dir_exists_absolute(folder_path):
+		var error = DirAccess.make_dir_absolute(folder_path)
+		
+		if error == OK:
+			print("Folder was created successfully.")
+		else:
+			print("Error by creating folder. Errorcode:", error)
+	else:
+		print("Folder already exists.")
+
 func change_scene_fluid(next_scene_path: String, reverse: bool = false):
 	# 1. Neue Szene laden und instanziieren
 	var next_scene_resource = load(next_scene_path)
