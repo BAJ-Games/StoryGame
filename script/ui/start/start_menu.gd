@@ -22,4 +22,4 @@ func quit() -> void:
 
 
 func _on_play_pressed() -> void:
-	get_parent().change_scene_fluid("res://scenes/play_menu.tscn")
+	get_parent().change_scene_fluid("res://scenes/ui/start/play_menu.tscn")

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c6hy0cbsvemil"]
 
-[ext_resource type="Texture2D" uid="uid://2ai35ftkq2f4" path="res://assets/images/StartMenu.jpg" id="1_jahr7"]
-[ext_resource type="Script" uid="uid://b47u4bc5e53t4" path="res://script/game_start.gd" id="1_s5y6q"]
-[ext_resource type="Theme" uid="uid://lfvc424kv7ea" path="res://assets/themes/ButtonTheme.tres" id="2_cd562"]
+[ext_resource type="Script" uid="uid://b47u4bc5e53t4" path="res://script/ui/start/game_start.gd" id="1_4c42u"]
+[ext_resource type="Texture2D" uid="uid://2ai35ftkq2f4" path="res://assets/images/StartMenu.jpg" id="2_prhya"]
+[ext_resource type="Theme" uid="uid://lfvc424kv7ea" path="res://assets/themes/ButtonTheme.tres" id="3_plg8t"]
 
 [node name="GameStart" type="Control" unique_id=1289063043]
 layout_mode = 3
@@ -11,13 +11,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_s5y6q")
+script = ExtResource("1_4c42u")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2095752750]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("1_jahr7")
+texture = ExtResource("2_prhya")
 expand_mode = 1
 
 [node name="Name" type="LineEdit" parent="." unique_id=74881579]
@@ -33,7 +33,7 @@ offset_right = 236.0
 offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_cd562")
+theme = ExtResource("3_plg8t")
 placeholder_text = "Your Name"
 
 [node name="Submit" type="Button" parent="." unique_id=764903520]
@@ -49,7 +49,7 @@ offset_right = 110.0
 offset_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_cd562")
+theme = ExtResource("3_plg8t")
 text = "Submit"
 
 [connection signal="pressed" from="Submit" to="." method="_on_submit_pressed"]

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cvpf4vfx0jq6a"]
 
-[ext_resource type="Texture2D" uid="uid://2ai35ftkq2f4" path="res://assets/images/StartMenu.jpg" id="1_3eh7m"]
-[ext_resource type="Script" uid="uid://btwoioldgka18" path="res://scenes/play_menu.gd" id="1_md3iu"]
-[ext_resource type="Theme" uid="uid://lfvc424kv7ea" path="res://assets/themes/ButtonTheme.tres" id="2_ixut7"]
+[ext_resource type="Script" uid="uid://btwoioldgka18" path="res://script/ui/start/play_menu.gd" id="1_ls5xk"]
+[ext_resource type="Texture2D" uid="uid://2ai35ftkq2f4" path="res://assets/images/StartMenu.jpg" id="2_a1arx"]
+[ext_resource type="Theme" uid="uid://lfvc424kv7ea" path="res://assets/themes/ButtonTheme.tres" id="3_yavqv"]
 
 [node name="PlayMenu" type="Control" unique_id=1246489549]
 layout_mode = 3
@@ -11,13 +11,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_md3iu")
+script = ExtResource("1_ls5xk")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2001518308]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("1_3eh7m")
+texture = ExtResource("2_a1arx")
 expand_mode = 1
 
 [node name="NewGame" type="Button" parent="." unique_id=1686629842]
@@ -33,7 +33,7 @@ offset_right = 162.0
 offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_ixut7")
+theme = ExtResource("3_yavqv")
 text = "New Game"
 
 [node name="Continue" type="Button" parent="." unique_id=895531143]
@@ -49,7 +49,7 @@ offset_right = 162.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_ixut7")
+theme = ExtResource("3_yavqv")
 text = "Continue"
 
 [node name="Back" type="Button" parent="." unique_id=1660070588]
@@ -65,7 +65,7 @@ offset_right = 162.0
 offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_ixut7")
+theme = ExtResource("3_yavqv")
 text = "Back"
 
 [connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
