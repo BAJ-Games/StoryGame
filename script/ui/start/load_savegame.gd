@@ -35,12 +35,14 @@ func populate_savegame_list() -> void:
 	var saves = get_save_files()
 	
 	for save_name in saves:
+		#Deletes the .res at the end of the name
+		save_name = save_name.left(-4)
 		# Fügt den Namen der Datei zur Liste hinzu
 		savegame_list.add_item(save_name)
 
 
 # Wird aufgerufen, wenn der Spieler auf einen Eintrag in der Liste klickt
-func _on_save_item_selected(index: int) -> void:
+func _on_save_item_selected(_index: int) -> void:
 	# Aktiviert den Laden-Button, da eine Auswahl existiert
 	load_button.disabled = false
 
