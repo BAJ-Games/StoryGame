@@ -15,13 +15,24 @@ func _ready() -> void:
 	else:
 		print("Folder already exists.")
 
-func change_scene_fluid(next_scene_path: String, reverse: bool = false):
+func change_scene_fluid(next_scene_path: String, reverse: bool = false, variable1 : String = "", variable2 : String = ""):
 	# 1. Neue Szene laden und instanziieren
 	var next_scene_resource = load(next_scene_path)
 	var next_scene = next_scene_resource.instantiate()
 	
 	# Neue Szene als Kind zum Manager hinzufügen
 	add_child(next_scene)
+	
+	if variable1 != "":
+		if "variable1" in next_scene:
+			next_scene.variable1 = variable1
+		
+	if variable2 != "":
+		if "variable2" in next_scene:
+			next_scene.variable2 = variable2
+			
+	if next_scene.has_method("setup_scene"):
+		next_scene.setup_scene()
 	
 	# Bildschirmbreite ermitteln
 	var screen_width = get_viewport().get_visible_rect().size.x

@@ -1,14 +1,27 @@
 extends Control
 
-@onready var player_name : String = "Default"
+@onready var variable1 : String = "Name"
 @onready var check_label : Label = $Label
+@onready var username : String = "Default"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player_name = SaveLoad.load("test")
+	pass
 	
+
+func setup_scene():
+	check_load()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	player_name = SaveLoad.load("test")
-	check_label.text = player_name
+	check_label.text = username
+	
+func check_load():
+	var error = SaveLoad.load(variable1)
+	if error is String:
+		print("Succesfully loaded username from savegame.")
+		username = error
+	else:
+		print("Error loading username from savegame. Errorcode:" , error)
+		username = variable1
