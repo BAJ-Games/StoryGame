@@ -30,7 +30,7 @@ anchor_bottom = 0.5
 offset_left = -384.0
 offset_top = -236.0
 offset_right = 384.0
-offset_bottom = 124.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_6tvqq")
@@ -42,11 +42,29 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -72.0
-offset_top = -152.0
-offset_right = 78.0
-offset_bottom = -68.0
+offset_left = -71.0
+offset_top = -224.0
+offset_right = 79.0
+offset_bottom = -140.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_6tvqq")
 text = "Load"
+
+[node name="Back" type="Button" parent="." unique_id=1730025528]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -104.0
+offset_right = 80.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_6tvqq")
+text = "Back"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
