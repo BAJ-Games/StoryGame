@@ -24,4 +24,4 @@ func check_load():
 		username = error
 	else:
 		print("Error loading username from savegame. Errorcode:" , error)
-		username = variable1
+		username = "Error"
