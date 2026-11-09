@@ -68,5 +68,51 @@ grow_vertical = 2
 theme = ExtResource("3_plg8t")
 text = "Back"
 
+[node name="Exists" type="Control" parent="." unique_id=1270594721]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Exists" unique_id=1851436485]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 896.0
+offset_bottom = 512.0
+color = Color(0.1728327, 0.17283267, 0.17283267, 0.827451)
+
+[node name="Label" type="Label" parent="Exists/ColorRect" unique_id=1466466886]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 640.0
+offset_bottom = 208.0
+theme = ExtResource("3_plg8t")
+theme_override_font_sizes/font_size = 60
+text = "Do you want to replace your old savegame?"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Yes" type="Button" parent="Exists/ColorRect" unique_id=218988794]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 256.0
+offset_right = 256.0
+offset_bottom = 340.0
+theme = ExtResource("3_plg8t")
+text = "Yes"
+
+[node name="No" type="Button" parent="Exists/ColorRect" unique_id=33785570]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 256.0
+offset_right = 576.0
+offset_bottom = 340.0
+theme = ExtResource("3_plg8t")
+text = "No
+"
+
 [connection signal="pressed" from="Submit" to="." method="_on_submit_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Exists/ColorRect/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="Exists/ColorRect/No" to="." method="_on_no_pressed"]
