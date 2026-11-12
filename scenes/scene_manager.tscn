@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://dic07jlcv571f"]
 
 [ext_resource type="Script" uid="uid://8b402wvl0d24" path="res://script/ui/scene_manager.gd" id="1_we8k5"]
-[ext_resource type="PackedScene" uid="uid://3darcfueatu3" path="res://scenes/ui/start/start_menu.tscn" id="2_b81s6"]
+[ext_resource type="PackedScene" uid="uid://ltko5hug2jge" path="res://scenes/ui/start/company_icon.tscn" id="2_65mdo"]
+[ext_resource type="AudioStream" uid="uid://ce53qe4lnqja8" path="res://assets/music/alex-morgan-movie-wide-screen-panorama-578501.mp3" id="3_b81s6"]
 
 [node name="SceneManager" type="Node" unique_id=1836874017]
 script = ExtResource("1_we8k5")
 
-[node name="StartMenu" parent="." unique_id=726293355 instance=ExtResource("2_b81s6")]
+[node name="CompanyIcon" parent="." unique_id=240062177 instance=ExtResource("2_65mdo")]
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="." unique_id=1955682967]
+stream = ExtResource("3_b81s6")
+bus = &"MenuMusic"
