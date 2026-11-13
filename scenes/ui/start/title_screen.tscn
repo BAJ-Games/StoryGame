@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d2q0x41wmbot2"]
 
 [ext_resource type="Script" uid="uid://cl7ub6iveta3t" path="res://script/ui/start/title_screen.gd" id="1_54wpk"]
-[ext_resource type="Texture2D" uid="uid://ceykukttrkodq" path="res://Overgrown - The Roboter Title.png" id="1_oyaak"]
+[ext_resource type="Texture2D" uid="uid://btrrnula0dlr1" path="res://assets/images/Overgrown - The Roboter Title Wide Screen.png" id="2_54wpk"]
 [ext_resource type="Theme" uid="uid://lfvc424kv7ea" path="res://assets/themes/ButtonTheme.tres" id="2_853uk"]
 
 [node name="TitleScreen" type="Control" unique_id=2111785908]
@@ -17,7 +17,7 @@ script = ExtResource("1_54wpk")
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("1_oyaak")
+texture = ExtResource("2_54wpk")
 expand_mode = 3
 
 [node name="ProgressBar" type="ProgressBar" parent="TextureRect" unique_id=1817354311]

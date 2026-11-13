@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Overgrown - The Roboter"
+config/name="Overgrown - The Robot"
+config/description="Post Shutdown Exploration - Explore the wild and upgrade yourself"
 run/main_scene="uid://dic07jlcv571f"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="uid://ceykukttrkodq"
