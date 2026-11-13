@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ltko5hug2jge"]
 
 [ext_resource type="Script" uid="uid://8cx2iuhmbva6" path="res://script/ui/start/company_icon.gd" id="1_b04c4"]
-[ext_resource type="Texture2D" uid="uid://8er13k47o3pa" path="res://assets/images/CompanyIcon.png" id="1_ni58e"]
+[ext_resource type="Texture2D" uid="uid://cgn4mmlgsvn71" path="res://assets/images/BAJ-Games Image.png" id="2_b04c4"]
 
 [node name="CompanyIcon" type="Control" unique_id=240062177]
 layout_mode = 3
@@ -34,5 +34,5 @@ offset_right = 192.0
 offset_bottom = 188.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ni58e")
+texture = ExtResource("2_b04c4")
 expand_mode = 3
