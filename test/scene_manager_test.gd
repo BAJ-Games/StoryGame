@@ -130,3 +130,28 @@ func test_player_save_can_store_name():
 	save.name = "Testspieler"
 
 	assert_that(save.name).is_equal("Testspieler")
+
+func test_save_system_can_save_player():
+	var save_load = load("res://script/save_system/save_load.gd").new()
+
+	var result = save_load.save(
+		"Testspieler",
+		"test_save"
+	)
+
+	assert_that(result).is_equal(false)
+	assert_that(
+		FileAccess.file_exists("user://savegames/test_save.res")
+	).is_true()
+
+func test_save_system_can_load_player():
+	var save_load = load("res://script/save_system/save_load.gd").new()
+
+	save_load.save(
+		"Testspieler",
+		"test_load"
+	)
+
+	var result = save_load.load("test_load")
+
+	assert_that(result).is_equal("Testspieler")
