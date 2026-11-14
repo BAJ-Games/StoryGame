@@ -229,3 +229,29 @@ func test_savegame_save_can_store_savegame_name():
 	save.savegame = "my_save"
 
 	assert_that(save.savegame).is_equal("my_save")
+
+func test_continue_can_load_username():
+	var save_load = load("res://script/save_system/save_load.gd").new()
+
+	save_load.save("Testspieler", "test_continue")
+
+	var continue_script = load(
+		"res://script/save_system/continue.gd"
+	).new()
+
+	continue_script.savegame = "test_continue"
+
+	continue_script.check_load()
+
+	assert_that(continue_script.username).is_equal("Testspieler")
+
+func test_continue_sets_error_for_missing_savegame():
+	var continue_script = load(
+		"res://script/save_system/continue.gd"
+	).new()
+
+	continue_script.savegame = "does_not_exist"
+
+	continue_script.check_load()
+
+	assert_that(continue_script.username).is_equal("Error")
