@@ -116,3 +116,21 @@ func test_scene_manager_fluid_reverse_starts_on_left():
 	)
 
 	scene_manager.free()
+
+
+func test_player_save_has_empty_name_by_default():
+	var save = PlayerSave.new()
+
+	assert_that(save).is_not_null()
+	assert_that(save.name).is_equal("")
+
+	save.free()
+
+func test_player_save_can_store_name():
+	var save = PlayerSave.new()
+
+	save.name = "Testspieler"
+
+	assert_that(save.name).is_equal("Testspieler")
+
+	save.free()
