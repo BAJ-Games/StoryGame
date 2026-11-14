@@ -33,8 +33,37 @@ func load(savegame : String):
 			return ERR_FILE_CORRUPT
 		
 		
-		var player_name = data.name
+		var player_name = data.savegame
 		return player_name
+	else:
+		print("Savegame-File doesn't exist at path:", path)
+		return ERR_FILE_NOT_FOUND
+
+
+func save_which_savegame(current_savegame : String):
+	
+	var which_savegame_save = PlayerSave.new()
+	
+	which_savegame_save.name = current_savegame
+	
+	var path : String = "user://which_savegame.res"
+	
+	ResourceSaver.save(which_savegame_save, path)
+	
+	print("Which savegame was saved")
+
+func load_which_savegame():
+	var path = "user://which_savegame.res"
+	
+	if FileAccess.file_exists(path):
+		var data = ResourceLoader.load(path) as PlayerSave
+		
+		if data == null:
+			return ERR_FILE_CORRUPT
+		
+		
+		var which_savegame = data.savegame
+		return which_savegame
 	else:
 		print("Savegame-File doesn't exist at path:", path)
 		return ERR_FILE_NOT_FOUND
