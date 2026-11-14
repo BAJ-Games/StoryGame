@@ -368,3 +368,49 @@ func test_start_menu_load_changes_to_load_savegame():
 	)
 
 	scene_manager.free()
+
+func test_play_menu_back_changes_to_start_menu():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	var play_menu = load(
+		"res://scenes/ui/start/play_menu.tscn"
+	).instantiate()
+
+	scene_manager.add_child(play_menu)
+
+	play_menu.back()
+
+	await get_tree().create_timer(1.2).timeout
+
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/start_menu.tscn"
+	)
+
+	scene_manager.free()
+
+func test_play_menu_new_game_changes_to_game_start():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	var play_menu = load(
+		"res://scenes/ui/start/play_menu.tscn"
+	).instantiate()
+
+	scene_manager.add_child(play_menu)
+
+	play_menu._on_new_game_pressed()
+
+	await get_tree().create_timer(1.2).timeout
+
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/game_start.tscn"
+	)
+
+	scene_manager.free()

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites id="2026-11-14" name="report_1" tests="1" failures="0" skipped="0" flaky="0" time="0.000">
-	<testsuite id="0" name="scene_manager_test" package="test" timestamp="2026-11-14T13:22:57" hostname="localhost" tests="1" failures="0" errors="0" skipped="0" flaky="0" time="1.387">
-		<testcase name="test_start_menu_load_changes_to_load_savegame" classname="scene_manager_test" time="1.377">
+	<testsuite id="0" name="scene_manager_test" package="test" timestamp="2026-11-14T13:24:57" hostname="localhost" tests="1" failures="0" errors="0" skipped="0" flaky="0" time="1.379">
+		<testcase name="test_play_menu_new_game_changes_to_game_start" classname="scene_manager_test" time="1.369">
 		</testcase>
 	</testsuite>
 </testsuites>
