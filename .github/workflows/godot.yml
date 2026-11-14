@@ -6,6 +6,7 @@ on:
       - main
 
 jobs:
+
   godot-check:
     name: Check Godot Project
     runs-on: ubuntu-latest
@@ -26,9 +27,28 @@ jobs:
       - name: Projekt importieren
         run: godot --headless --path . --import
 
-      - name: Spiel starten und prüfen
-        run: |
-          godot --headless --path . --quit-after 10
-
       - name: Spiel starten
         run: godot --headless --path . --quit-after 10
+
+
+  gdunit-tests:
+    name: GdUnit4 Tests
+    runs-on: ubuntu-latest
+    needs: godot-check
+
+    steps:
+      - name: Repository herunterladen
+        uses: actions/checkout@v4
+
+      - name: Godot installieren
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.7.2
+
+      - name: GdUnit4 Tests ausführen
+        uses: godot-gdunit-labs/gdUnit4-action@v1
+        with:
+          godot-version: '4.7.2'
+          paths: 'res://test'
+          version: '6.2.3'
+          headless: true
