@@ -143,6 +143,8 @@ func test_save_system_can_save_player():
 	assert_that(
 		FileAccess.file_exists("user://savegames/test_save.res")
 	).is_true()
+	
+	save_load.free()
 
 func test_save_system_can_load_player():
 	var save_load = load("res://script/save_system/save_load.gd").new()
@@ -155,6 +157,8 @@ func test_save_system_can_load_player():
 	var result = save_load.load("test_load")
 
 	assert_that(result).is_equal("Testspieler")
+	
+	save_load.free()
 
 func test_save_system_detects_existing_savegame():
 	var save_load = load("res://script/save_system/save_load.gd").new()
@@ -171,6 +175,8 @@ func test_save_system_detects_existing_savegame():
 	)
 
 	assert_that(result).is_equal(true)
+	
+	save_load.free()
 
 func test_save_system_can_replace_existing_savegame():
 	var save_load = load("res://script/save_system/save_load.gd").new()
@@ -192,6 +198,8 @@ func test_save_system_can_replace_existing_savegame():
 	var loaded_name = save_load.load("test_replace")
 
 	assert_that(loaded_name).is_equal("NeuerSpieler")
+	
+	save_load.free()
 
 func test_save_system_returns_error_for_missing_savegame():
 	var save_load = load("res://script/save_system/save_load.gd").new()
@@ -199,6 +207,8 @@ func test_save_system_returns_error_for_missing_savegame():
 	var result = save_load.load("this_save_does_not_exist")
 
 	assert_that(result).is_equal(ERR_FILE_NOT_FOUND)
+	
+	save_load.free()
 
 func test_save_system_can_save_and_load_current_savegame():
 	var save_load = load("res://script/save_system/save_load.gd").new()
@@ -208,6 +218,8 @@ func test_save_system_can_save_and_load_current_savegame():
 	var result = save_load.load_which_savegame()
 
 	assert_that(result).is_equal("my_save")
+	
+	save_load.free()
 
 func test_save_system_returns_error_when_no_current_savegame_exists():
 	var save_load = load("res://script/save_system/save_load.gd").new()
@@ -220,6 +232,8 @@ func test_save_system_returns_error_when_no_current_savegame_exists():
 	var result = save_load.load_which_savegame()
 
 	assert_that(result).is_equal(ERR_FILE_NOT_FOUND)
+	
+	save_load.free()
 
 func test_savegame_save_can_store_savegame_name():
 	var save = SavegameSave.new()
@@ -244,6 +258,9 @@ func test_continue_can_load_username():
 	continue_script.check_load()
 
 	assert_that(continue_script.username).is_equal("Testspieler")
+	
+	save_load.free()
+	continue_script.free()
 
 func test_continue_sets_error_for_missing_savegame():
 	var continue_script = load(
@@ -255,6 +272,8 @@ func test_continue_sets_error_for_missing_savegame():
 	continue_script.check_load()
 
 	assert_that(continue_script.username).is_equal("Error")
+	
+	continue_script.free()
 
 func test_username_control_can_load_username():
 	var save_load = load("res://script/save_system/save_load.gd").new()
@@ -268,6 +287,9 @@ func test_username_control_can_load_username():
 	username_control.check_load()
 
 	assert_that(username_control.username).is_equal("Testspieler")
+	
+	save_load.free()
+	username_control.free()
 
 func test_username_control_sets_error_for_missing_savegame():
 	var username_control = load(
@@ -278,6 +300,8 @@ func test_username_control_sets_error_for_missing_savegame():
 	username_control.check_load()
 
 	assert_that(username_control.username).is_equal("Error")
+	
+	username_control.free()
 
 func test_username_control_yes_saves_current_savegame():
 	var username_control = load(
@@ -295,3 +319,6 @@ func test_username_control_yes_saves_current_savegame():
 	var result = save_load.load_which_savegame()
 
 	assert_that(result).is_equal("test_yes")
+	
+	username_control.free()
+	save_load.free()
