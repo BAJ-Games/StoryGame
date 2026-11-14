@@ -522,3 +522,87 @@ func test_game_start_detects_existing_savegame():
 
 	DirAccess.remove_absolute("user://savegames/" + test_name + ".res")
 	scene_manager.free()
+
+func test_game_start_no_keeps_existing_savegame():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	var game_start = load(
+		"res://scenes/ui/start/game_start.tscn"
+	).instantiate()
+
+	scene_manager.add_child(game_start)
+	await get_tree().process_frame
+
+	var test_name = "NoTestPlayer"
+
+	SaveLoad.save("OriginalName", test_name)
+
+	game_start.player_name.text = test_name
+	game_start.save_logic()
+
+	await get_tree().process_frame
+
+	assert_that(game_start.exists_node.visible).is_true()
+
+	# "Nein" drücken
+	game_start._on_no_pressed()
+
+	await get_tree().process_frame
+
+	assert_that(game_start.exists_node.visible).is_false()
+
+	# Prüfen, dass das vorhandene Savegame unverändert geblieben ist
+	var loaded_name = SaveLoad.load(test_name)
+
+	assert_that(loaded_name).is_equal("OriginalName")
+
+	DirAccess.remove_absolute("user://savegames/" + test_name + ".res")
+	scene_manager.free()
+
+func test_game_start_yes_overwrites_existing_savegame():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	var game_start = load(
+		"res://scenes/ui/start/game_start.tscn"
+	).instantiate()
+
+	scene_manager.add_child(game_start)
+	await get_tree().process_frame
+
+	var test_name = "YesTestPlayer"
+
+	# Vorhandenes Savegame mit altem Namen erstellen
+	SaveLoad.save("OldName", test_name)
+
+	game_start.player_name.text = test_name
+	game_start.save_logic()
+
+	await get_tree().process_frame
+
+	assert_that(game_start.exists_node.visible).is_true()
+
+	# "Ja" zum Überschreiben
+	game_start._on_yes_pressed()
+
+	await get_tree().create_timer(1.2).timeout
+
+	# Das Savegame muss jetzt den neuen Namen enthalten
+	var loaded_name = SaveLoad.load(test_name)
+
+	assert_that(loaded_name).is_equal(test_name)
+
+	# Danach muss UsernameControl aktiv sein
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/username_control.tscn"
+	)
+
+	DirAccess.remove_absolute("user://savegames/" + test_name + ".res")
+	scene_manager.free()
