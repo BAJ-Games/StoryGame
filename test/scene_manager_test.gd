@@ -278,3 +278,20 @@ func test_username_control_sets_error_for_missing_savegame():
 	username_control.check_load()
 
 	assert_that(username_control.username).is_equal("Error")
+
+func test_username_control_yes_saves_current_savegame():
+	var username_control = load(
+		"res://script/ui/start/username_control.gd"
+	).new()
+
+	username_control.variable1 = "test_yes"
+
+	username_control._on_yes_pressed()
+
+	var save_load = load(
+		"res://script/save_system/save_load.gd"
+	).new()
+
+	var result = save_load.load_which_savegame()
+
+	assert_that(result).is_equal("test_yes")
