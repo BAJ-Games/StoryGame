@@ -220,4 +220,12 @@ func test_save_system_returns_error_when_no_current_savegame_exists():
 	var result = save_load.load_which_savegame()
 
 	assert_that(result).is_equal(ERR_FILE_NOT_FOUND)
-	
+
+func test_savegame_save_can_store_savegame_name():
+	var save = SavegameSave.new()
+
+	assert_that(save.savegame).is_equal("")
+
+	save.savegame = "my_save"
+
+	assert_that(save.savegame).is_equal("my_save")
