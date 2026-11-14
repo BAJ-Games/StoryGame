@@ -208,3 +208,16 @@ func test_save_system_can_save_and_load_current_savegame():
 	var result = save_load.load_which_savegame()
 
 	assert_that(result).is_equal("my_save")
+
+func test_save_system_returns_error_when_no_current_savegame_exists():
+	var save_load = load("res://script/save_system/save_load.gd").new()
+
+	var path = "user://which_savegame.res"
+
+	if FileAccess.file_exists(path):
+		DirAccess.remove_absolute(path)
+
+	var result = save_load.load_which_savegame()
+
+	assert_that(result).is_equal(ERR_FILE_NOT_FOUND)
+	
