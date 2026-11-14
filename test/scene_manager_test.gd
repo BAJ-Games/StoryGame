@@ -155,3 +155,19 @@ func test_save_system_can_load_player():
 	var result = save_load.load("test_load")
 
 	assert_that(result).is_equal("Testspieler")
+
+func test_save_system_detects_existing_savegame():
+	var save_load = load("res://script/save_system/save_load.gd").new()
+
+	save_load.save(
+		"Testspieler",
+		"test_existing"
+	)
+
+	var result = save_load.save(
+		"NeuerSpieler",
+		"test_existing",
+		true
+	)
+
+	assert_that(result).is_equal(true)
