@@ -606,3 +606,158 @@ func test_game_start_yes_overwrites_existing_savegame():
 
 	DirAccess.remove_absolute("user://savegames/" + test_name + ".res")
 	scene_manager.free()
+
+func test_load_savegame_finds_save_files():
+	var scene = load("res://scenes/ui/start/load_savegame.tscn")
+	var load_savegame = scene.instantiate()
+
+	add_child(load_savegame)
+	await get_tree().process_frame
+
+	var test_name = "LoadTestPlayer"
+
+	# Test-Savegame erstellen
+	SaveLoad.save(test_name, test_name)
+
+	var files = load_savegame.get_save_files()
+
+	assert_that(files).contains(test_name + ".res")
+
+	# Aufräumen
+	DirAccess.remove_absolute("user://savegames/" + test_name + ".res")
+	load_savegame.free()
+
+func test_load_savegame_populates_savegame_list():
+	var scene = load("res://scenes/ui/start/load_savegame.tscn")
+	var load_savegame = scene.instantiate()
+
+	add_child(load_savegame)
+	await get_tree().process_frame
+
+	var test_name = "ListTestPlayer"
+
+	SaveLoad.save(test_name, test_name)
+
+	load_savegame.populate_savegame_list()
+
+	var item_count = load_savegame.savegame_list.item_count
+	var found = false
+
+	for i in range(item_count):
+		if load_savegame.savegame_list.get_item_text(i) == test_name:
+			found = true
+			break
+
+	assert_that(found).is_true()
+
+	DirAccess.remove_absolute("user://savegames/" + test_name + ".res")
+	load_savegame.free()
+
+func test_load_savegame_enables_load_button_when_save_is_selected():
+	var scene = load("res://scenes/ui/start/load_savegame.tscn")
+	var load_savegame = scene.instantiate()
+
+	add_child(load_savegame)
+	await get_tree().process_frame
+
+	var test_name = "SelectionTestPlayer"
+
+	SaveLoad.save(test_name, test_name)
+	load_savegame.populate_savegame_list()
+
+	assert_that(load_savegame.load_button.disabled).is_true()
+
+	# Ersten Eintrag auswählen
+	load_savegame.savegame_list.select(0)
+	load_savegame._on_save_item_selected(0)
+
+	assert_that(load_savegame.load_button.disabled).is_false()
+
+	DirAccess.remove_absolute("user://savegames/" + test_name + ".res")
+	load_savegame.free()
+
+func test_load_savegame_can_load_selected_save():
+	var scene = load("res://scenes/ui/start/load_savegame.tscn")
+	var load_savegame = scene.instantiate()
+
+	add_child(load_savegame)
+	await get_tree().process_frame
+
+	var test_name = "LoadButtonTestPlayer"
+
+	SaveLoad.save(test_name, test_name)
+
+	var save_path = "user://savegames/" + test_name + ".res"
+
+	# Die Funktion darf beim Laden keinen Fehler verursachen
+	load_savegame.load_savegame(save_path)
+
+	var loaded_data = ResourceLoader.load(save_path)
+
+	assert_that(loaded_data).is_not_null()
+	assert_that(loaded_data.name).is_equal(test_name)
+
+	DirAccess.remove_absolute(save_path)
+	load_savegame.free()
+
+func test_load_savegame_button_loads_selected_save():
+	var scene = load("res://scenes/ui/start/load_savegame.tscn")
+	var load_savegame = scene.instantiate()
+
+	add_child(load_savegame)
+	await get_tree().process_frame
+
+	var test_name = "ButtonLoadTestPlayer"
+
+	SaveLoad.save(test_name, test_name)
+	load_savegame.populate_savegame_list()
+
+	assert_that(load_savegame.savegame_list.item_count).is_greater(0)
+
+	# Savegame auswählen
+	load_savegame.savegame_list.select(0)
+	load_savegame._on_save_item_selected(0)
+
+	assert_that(load_savegame.load_button.disabled).is_false()
+
+	# Laden ausführen
+	load_savegame._on_load_button_pressed()
+
+	# Prüfen, dass die Datei weiterhin korrekt geladen werden kann
+	var save_path = "user://savegames/" + test_name + ".res"
+	var loaded_data = ResourceLoader.load(save_path)
+
+	assert_that(loaded_data).is_not_null()
+	assert_that(loaded_data.name).is_equal(test_name)
+
+	DirAccess.remove_absolute(save_path)
+	load_savegame.free()
+
+func test_load_savegame_back_returns_to_start_menu():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	scene_manager.change_scene_fluid(
+		"res://scenes/ui/start/load_savegame.tscn"
+	)
+
+	await get_tree().create_timer(1.2).timeout
+
+	var load_savegame = scene_manager.current_scene
+
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/load_savegame.tscn"
+	)
+
+	load_savegame.back()
+
+	await get_tree().create_timer(1.2).timeout
+
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/start_menu.tscn"
+	)
+
+	scene_manager.free()
