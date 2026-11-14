@@ -800,3 +800,46 @@ func test_title_screen_changes_to_start_menu_after_duration():
 	)
 
 	scene_manager.free()
+
+func test_company_icon_updates_elapsed():
+	var scene = load("res://scenes/ui/start/company_icon.tscn")
+	var company_icon = scene.instantiate()
+
+	add_child(company_icon)
+	await get_tree().process_frame
+
+	var elapsed_before = company_icon.elapsed
+
+	company_icon._process(1.0)
+
+	assert_that(company_icon.elapsed).is_equal_approx(
+		elapsed_before + 1.0,
+		0.01
+	)
+
+	company_icon.free()
+
+func test_company_icon_changes_to_title_screen_after_duration():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	var company_icon = load(
+		"res://scenes/ui/start/company_icon.tscn"
+	).instantiate()
+
+	scene_manager.add_child(company_icon)
+	await get_tree().process_frame
+
+	company_icon.elapsed = company_icon.duration
+	company_icon._process(0.0)
+
+	await get_tree().create_timer(3.0).timeout
+
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/title_screen.tscn"
+	)
+
+	scene_manager.free()
