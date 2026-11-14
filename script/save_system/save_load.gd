@@ -33,7 +33,7 @@ func load(savegame : String):
 			return ERR_FILE_CORRUPT
 		
 		
-		var player_name = data.savegame
+		var player_name = data.name
 		return player_name
 	else:
 		print("Savegame-File doesn't exist at path:", path)
@@ -42,9 +42,9 @@ func load(savegame : String):
 
 func save_which_savegame(current_savegame : String):
 	
-	var which_savegame_save = PlayerSave.new()
+	var which_savegame_save = SavegameSave.new()
 	
-	which_savegame_save.name = current_savegame
+	which_savegame_save.savegame = current_savegame
 	
 	var path : String = "user://which_savegame.res"
 	
@@ -56,7 +56,7 @@ func load_which_savegame():
 	var path = "user://which_savegame.res"
 	
 	if FileAccess.file_exists(path):
-		var data = ResourceLoader.load(path) as PlayerSave
+		var data = ResourceLoader.load(path) as SavegameSave
 		
 		if data == null:
 			return ERR_FILE_CORRUPT

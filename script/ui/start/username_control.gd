@@ -25,3 +25,12 @@ func check_load():
 	else:
 		print("Error loading username from savegame. Errorcode:" , error)
 		username = "Error"
+
+
+func _on_yes_pressed() -> void:
+	var scene_path = self.scene_file_path
+	SaveLoad.save_which_savegame(scene_path)
+
+
+func _on_no_pressed() -> void:
+	get_parent().change_scene_fluid("res://scenes/ui/start/game_start.tscn", true)
