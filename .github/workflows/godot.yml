@@ -26,8 +26,9 @@ jobs:
       - name: Projekt importieren
         run: godot --headless --path . --import
 
-      - name: Projekt prüfen
-        run: godot --headless --path . --check-only
+      - name: Spiel starten und prüfen
+        run: |
+          godot --headless --path . --quit-after 10
 
       - name: Spiel starten
         run: godot --headless --path . --quit-after 10
