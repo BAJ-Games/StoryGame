@@ -47,3 +47,72 @@ func test_scene_manager_can_change_scene_with_fade():
 	)
 
 	scene_manager.free()
+
+func test_scene_manager_can_change_scene_with_fluid():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	scene_manager.change_scene_fluid(
+		"res://scenes/ui/start/username_control.tscn"
+	)
+
+	await get_tree().create_timer(1.2).timeout
+
+	assert_that(scene_manager.current_scene).is_not_null()
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/username_control.tscn"
+	)
+
+	scene_manager.free()
+
+func test_scene_manager_can_change_scene_with_fade_black():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	scene_manager.change_scene_fade_black(
+		"res://scenes/ui/start/username_control.tscn",
+		0.2
+	)
+
+	await get_tree().create_timer(1.3).timeout
+
+	assert_that(scene_manager.current_scene).is_not_null()
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/username_control.tscn"
+	)
+
+	scene_manager.free()
+
+func test_scene_manager_fluid_reverse_starts_on_left():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	scene_manager.change_scene_fluid(
+		"res://scenes/ui/start/username_control.tscn",
+		true
+	)
+
+	await get_tree().process_frame
+
+	var next_scene = scene_manager.get_child(
+		scene_manager.get_child_count() - 1
+	)
+
+	assert_that(next_scene.position.x < 0.0).is_true()
+
+	await get_tree().create_timer(1.2).timeout
+
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/username_control.tscn"
+	)
+
+	scene_manager.free()
