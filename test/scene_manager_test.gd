@@ -124,13 +124,9 @@ func test_player_save_has_empty_name_by_default():
 	assert_that(save).is_not_null()
 	assert_that(save.name).is_equal("")
 
-	save.free()
-
 func test_player_save_can_store_name():
 	var save = PlayerSave.new()
 
 	save.name = "Testspieler"
 
 	assert_that(save.name).is_equal("Testspieler")
-
-	save.free()
