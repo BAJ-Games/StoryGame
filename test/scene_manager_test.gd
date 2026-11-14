@@ -437,3 +437,27 @@ func test_play_menu_continue_changes_to_continue():
 	)
 
 	scene_manager.free()
+
+func test_game_start_can_create_new_savegame():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	var game_start = load(
+		"res://scenes/ui/start/game_start.tscn"
+	).instantiate()
+
+	scene_manager.add_child(game_start)
+
+	game_start.player_name.text = "Testspieler"
+	game_start.save_logic()
+
+	await get_tree().create_timer(1.2).timeout
+
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/username_control.tscn"
+	)
+
+	scene_manager.free()
