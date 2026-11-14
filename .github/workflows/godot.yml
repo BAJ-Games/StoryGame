@@ -51,3 +51,4 @@ jobs:
           godot-version: '4.7.2'
           paths: 'res://test'
           version: 'v6.2.3'
+          publish-report: false
