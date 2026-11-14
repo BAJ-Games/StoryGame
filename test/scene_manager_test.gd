@@ -761,3 +761,42 @@ func test_load_savegame_back_returns_to_start_menu():
 	)
 
 	scene_manager.free()
+
+func test_title_screen_updates_progress_bar():
+	var scene = load("res://scenes/ui/start/title_screen.tscn")
+	var title_screen = scene.instantiate()
+
+	add_child(title_screen)
+	await get_tree().process_frame
+
+	title_screen.elapsed = 3.0
+	title_screen._process(0.0)
+
+	assert_that(title_screen.progress_bar.value).is_equal(50.0)
+
+	title_screen.free()
+
+func test_title_screen_changes_to_start_menu_after_duration():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	var title_screen = load(
+		"res://scenes/ui/start/title_screen.tscn"
+	).instantiate()
+
+	scene_manager.add_child(title_screen)
+	await get_tree().process_frame
+
+	title_screen.elapsed = title_screen.duration
+	title_screen._process(0.0)
+
+	await get_tree().create_timer(0.7).timeout
+
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/start_menu.tscn"
+	)
+
+	scene_manager.free()
