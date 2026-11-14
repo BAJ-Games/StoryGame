@@ -192,3 +192,10 @@ func test_save_system_can_replace_existing_savegame():
 	var loaded_name = save_load.load("test_replace")
 
 	assert_that(loaded_name).is_equal("NeuerSpieler")
+
+func test_save_system_returns_error_for_missing_savegame():
+	var save_load = load("res://script/save_system/save_load.gd").new()
+
+	var result = save_load.load("this_save_does_not_exist")
+
+	assert_that(result).is_equal(ERR_FILE_NOT_FOUND)
