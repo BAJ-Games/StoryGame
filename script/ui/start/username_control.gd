@@ -28,8 +28,7 @@ func check_load():
 
 
 func _on_yes_pressed() -> void:
-	var scene_path = self.scene_file_path
-	SaveLoad.save_which_savegame(scene_path)
+	SaveLoad.save_which_savegame(variable1)
 
 
 func _on_no_pressed() -> void:
