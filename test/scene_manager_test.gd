@@ -171,3 +171,24 @@ func test_save_system_detects_existing_savegame():
 	)
 
 	assert_that(result).is_equal(true)
+
+func test_save_system_can_replace_existing_savegame():
+	var save_load = load("res://script/save_system/save_load.gd").new()
+
+	save_load.save(
+		"AlterSpieler",
+		"test_replace"
+	)
+
+	var result = save_load.save(
+		"NeuerSpieler",
+		"test_replace",
+		true,
+		true
+	)
+
+	assert_that(result).is_equal(false)
+
+	var loaded_name = save_load.load("test_replace")
+
+	assert_that(loaded_name).is_equal("NeuerSpieler")
