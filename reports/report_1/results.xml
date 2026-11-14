@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites id="2026-11-14" name="report_1" tests="14" failures="0" skipped="0" flaky="0" time="0.000">
-	<testsuite id="0" name="scene_manager_test" package="test" timestamp="2026-11-14T12:56:47" hostname="localhost" tests="14" failures="0" errors="0" skipped="0" flaky="0" time="5.875">
-		<testcase name="test_username_scene_can_be_loaded" classname="scene_manager_test" time="0.322">
+<testsuites id="2026-11-14" name="report_1" tests="15" failures="0" skipped="0" flaky="0" time="0.000">
+	<testsuite id="0" name="scene_manager_test" package="test" timestamp="2026-11-14T12:58:05" hostname="localhost" tests="15" failures="0" errors="0" skipped="0" flaky="0" time="5.861">
+		<testcase name="test_username_scene_can_be_loaded" classname="scene_manager_test" time="0.317">
 		</testcase>
-		<testcase name="test_username_scene_has_correct_root" classname="scene_manager_test" time="0.312">
+		<testcase name="test_username_scene_has_correct_root" classname="scene_manager_test" time="0.314">
 		</testcase>
 		<testcase name="test_scene_manager_starts_with_company_icon" classname="scene_manager_test" time="0.037">
 		</testcase>
-		<testcase name="test_scene_manager_can_change_scene_with_fade" classname="scene_manager_test" time="0.870">
+		<testcase name="test_scene_manager_can_change_scene_with_fade" classname="scene_manager_test" time="0.869">
 		</testcase>
-		<testcase name="test_scene_manager_can_change_scene_with_fluid" classname="scene_manager_test" time="1.384">
+		<testcase name="test_scene_manager_can_change_scene_with_fluid" classname="scene_manager_test" time="1.372">
 		</testcase>
-		<testcase name="test_scene_manager_can_change_scene_with_fade_black" classname="scene_manager_test" time="1.495">
+		<testcase name="test_scene_manager_can_change_scene_with_fade_black" classname="scene_manager_test" time="1.490">
 		</testcase>
-		<testcase name="test_scene_manager_fluid_reverse_starts_on_left" classname="scene_manager_test" time="1.402">
+		<testcase name="test_scene_manager_fluid_reverse_starts_on_left" classname="scene_manager_test" time="1.394">
 		</testcase>
 		<testcase name="test_player_save_has_empty_name_by_default" classname="scene_manager_test" time="0.001">
 		</testcase>
@@ -21,13 +21,15 @@
 		</testcase>
 		<testcase name="test_save_system_can_save_player" classname="scene_manager_test" time="0.003">
 		</testcase>
-		<testcase name="test_save_system_can_load_player" classname="scene_manager_test" time="0.004">
+		<testcase name="test_save_system_can_load_player" classname="scene_manager_test" time="0.010">
 		</testcase>
-		<testcase name="test_save_system_detects_existing_savegame" classname="scene_manager_test" time="0.006">
+		<testcase name="test_save_system_detects_existing_savegame" classname="scene_manager_test" time="0.003">
 		</testcase>
-		<testcase name="test_save_system_can_replace_existing_savegame" classname="scene_manager_test" time="0.006">
+		<testcase name="test_save_system_can_replace_existing_savegame" classname="scene_manager_test" time="0.007">
 		</testcase>
 		<testcase name="test_save_system_returns_error_for_missing_savegame" classname="scene_manager_test" time="0.006">
+		</testcase>
+		<testcase name="test_save_system_can_save_and_load_current_savegame" classname="scene_manager_test" time="0.013">
 		</testcase>
 	</testsuite>
 </testsuites>

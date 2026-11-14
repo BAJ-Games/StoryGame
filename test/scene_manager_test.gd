@@ -199,3 +199,12 @@ func test_save_system_returns_error_for_missing_savegame():
 	var result = save_load.load("this_save_does_not_exist")
 
 	assert_that(result).is_equal(ERR_FILE_NOT_FOUND)
+
+func test_save_system_can_save_and_load_current_savegame():
+	var save_load = load("res://script/save_system/save_load.gd").new()
+
+	save_load.save_which_savegame("my_save")
+
+	var result = save_load.load_which_savegame()
+
+	assert_that(result).is_equal("my_save")
