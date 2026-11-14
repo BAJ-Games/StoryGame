@@ -31,3 +31,19 @@ Copyright and intellectual property rights related to the BAJ-Games organization
 Any unauthorized, illegitimate, or otherwise unjustified attempt to claim ownership or control over the BAJ-Games organization, its repositories, or its copyrighted material will be considered a violation of this license.
 
 In such cases, the individual responsible may have their ownership rights and privileges revoked. The organization may also transfer administrative ownership to another authorized owner in order to protect the project and its intellectual property.
+
+Third-Party Assets
+
+This project contains assets obtained from third-party websites and services. These assets are not owned by BAJ-Games and remain subject to their respective licenses and terms of use.
+
+Sources include:
+
+https://polyhaven.com/
+
+https://www.poliigon.com/
+
+https://ambientcg.com/
+
+https://3dvalley.com/
+
+The rights to these third-party assets remain with their respective authors and/or copyright holders. Their inclusion in this project does not grant ownership or additional rights to BAJ-Games beyond those permitted by the respective licenses.
