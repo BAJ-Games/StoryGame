@@ -490,3 +490,35 @@ func test_game_start_back_returns_to_play_menu():
 	)
 
 	scene_manager.free()
+
+func test_game_start_detects_existing_savegame():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	var game_start = load(
+		"res://scenes/ui/start/game_start.tscn"
+	).instantiate()
+
+	scene_manager.add_child(game_start)
+	await get_tree().process_frame
+
+	var test_name = "ExistingTestPlayer"
+
+	# Erstellt das Savegame, das bereits existieren soll
+	SaveLoad.save(test_name, test_name)
+
+	game_start.player_name.text = test_name
+	game_start.save_logic()
+
+	await get_tree().process_frame
+
+	assert_that(game_start.exists_node.visible).is_true()
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/company_icon.tscn"
+	)
+
+	DirAccess.remove_absolute("user://savegames/" + test_name + ".res")
+	scene_manager.free()
