@@ -25,6 +25,10 @@ SaveLoad="*uid://cp21kqtbe5lg8"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
+
 [input]
 
 ui_accept={
