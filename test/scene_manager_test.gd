@@ -322,3 +322,49 @@ func test_username_control_yes_saves_current_savegame():
 	
 	username_control.free()
 	save_load.free()
+
+func test_start_menu_play_changes_to_play_menu():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	var start_menu = load(
+		"res://scenes/ui/start/start_menu.tscn"
+	).instantiate()
+
+	scene_manager.add_child(start_menu)
+
+	start_menu._on_play_pressed()
+
+	await get_tree().create_timer(1.2).timeout
+
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/play_menu.tscn"
+	)
+
+	scene_manager.free()
+
+func test_start_menu_load_changes_to_load_savegame():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	var start_menu = load(
+		"res://scenes/ui/start/start_menu.tscn"
+	).instantiate()
+
+	scene_manager.add_child(start_menu)
+
+	start_menu._on_load_pressed()
+
+	await get_tree().create_timer(1.2).timeout
+
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/load_savegame.tscn"
+	)
+
+	scene_manager.free()
