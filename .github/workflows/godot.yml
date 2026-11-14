@@ -1,0 +1,112 @@
+name: Godot CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  push:
+    branches:
+      - main
+
+jobs:
+
+  # ==========================================
+  # 1. GODOT PROJEKT PRÜFEN
+  # ==========================================
+
+  check:
+    name: Godot Projekt prüfen
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Repository herunterladen
+        uses: actions/checkout@v4
+
+      - name: Godot installieren
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.7.2
+          include-templates: true
+
+      - name: Godot Version anzeigen
+        run: godot --version
+
+      - name: Projekt importieren
+        run: |
+          godot --headless --path . --import
+
+      - name: GDScript prüfen
+        run: |
+          godot --headless --path . --check-only
+
+      - name: Spiel starten
+        run: |
+          timeout 30s godot --headless --path . --quit-after 10
+
+
+  # ==========================================
+  # 2. AUTOMATISCHE TESTS
+  # ==========================================
+
+  tests:
+    name: Godot Tests
+    runs-on: ubuntu-latest
+    needs: check
+
+    steps:
+
+      - name: Repository herunterladen
+        uses: actions/checkout@v4
+
+      - name: Godot installieren
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.7.2
+
+      - name: GdUnit4 Tests ausführen
+        uses: godot-gdunit-labs/gdUnit4-action@v1
+        with:
+          godot-version: '4.7.2'
+          paths: 'res://tests'
+          headless: true
+
+
+  # ==========================================
+  # 3. SPIEL EXPORTIEREN
+  # ==========================================
+
+  build:
+    name: Spiel bauen
+    runs-on: ubuntu-latest
+    needs:
+      - check
+      - tests
+
+    steps:
+
+      - name: Repository herunterladen
+        uses: actions/checkout@v4
+
+      - name: Godot installieren
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.7.2
+          include-templates: true
+
+      - name: Build-Ordner erstellen
+        run: mkdir -p build
+
+      - name: Spiel exportieren
+        run: |
+          godot --headless \
+            --path . \
+            --export-release "Windows Desktop" \
+            build/game.exe
+
+      - name: Build speichern
+        uses: actions/upload-artifact@v4
+        with:
+          name: Godot-Windows-Build
+          path: build/game.exe
