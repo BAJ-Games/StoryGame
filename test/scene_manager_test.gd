@@ -13,3 +13,17 @@ func test_username_scene_has_correct_root():
 	assert_that(username_control.name).is_equal("UsernameControl")
 
 	username_control.free()
+
+func test_scene_manager_starts_with_company_icon():
+	var scene = load("res://scenes/scene_manager.tscn")
+	var scene_manager = scene.instantiate()
+
+	add_child(scene_manager)
+	await get_tree().process_frame
+
+	assert_that(scene_manager.current_scene).is_not_null()
+	assert_that(scene_manager.current_scene_path).is_equal(
+		"res://scenes/ui/start/company_icon.tscn"
+	)
+
+	scene_manager.free()
